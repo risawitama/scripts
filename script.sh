@@ -20,6 +20,7 @@ echo "============="
 echo "Sync success"
 echo "============="
 
+#support
 rm -rf vendor/support
 git clone https://github.com/koko-07870/derp_vendor_support.git -b 14 vendor/support
 
