@@ -1,74 +1,33 @@
 #!/bin/bash
 
-rm -rf .repo/local_manifests
-rm -rf device/samsung
-rm -rf kernel/samsung
-rm -rf vendor/samsung
-rm -rf hardware/samsung
-
-# Cleanup to fix SyncErrors raised during branch checkouts
-rm -rf platform/prebuilts
+cd Pixel14
 
 echo "========================================================================"
-echo "DELETED DIRECTORIES"
+echo "Inside the dir"
 echo "========================================================================"
 
+rm .repo/manifests/crave.yaml* || true; # Removes existing crave.yamls
 
-# Repo Init
-repo init -u https://github.com/ProjectPixelage/android_manifest.git -b 15 --git-lfs --depth=1
-
-echo "========================================================================"
-echo "REPO INITIALIZED"
-echo "========================================================================"
-
-
-# Clone local_manifests repository
-git clone https://github.com/koko-07870/local_manifests --depth 1 -b pixelage .repo/local_manifests
-
+curl -o .repo/manifests/crave.yaml https://raw.githubusercontent.com/sounddrill31/crave_aosp_builder/main/configs/crave/crave.yaml.aosp # Downloads crave.yaml
 
 echo "========================================================================"
-echo "CLONED REPOS"
+echo "cloned crave yaml"
 echo "========================================================================"
 
-
-# Resync
-
-/opt/crave/resync.sh
+crave pull out/target/product/a52q/PixelOS_a52q-14.0-20241006-0548.zip
 
 echo "========================================================================"
-echo "RESYNCED"
+echo "pulled rom zip"
 echo "========================================================================"
 
-
-# Upgrade System and install openssl
-
-sudo apt update && sudo apt upgrade -y
+cd /home/crave-devspaces
 
 echo "========================================================================"
-echo "SYSTEM UPGRADED"
+echo "home dir"
 echo "========================================================================"
 
-
-# Clone Custom Clang
-
-CUSTOMCLANG="r522817"
-rm -rf "prebuilts/clang/host/linux-x86/clang-${CUSTOMCLANG}"
-git clone --depth=1 https://gitlab.com/kei-space/clang/r522817 prebuilts/clang/host/linux-x86/clang-${CUSTOMCLANG}
+./upload.sh Pixel14/out/target/product/a52q/PixelOS_a52q-14.0-20241006-0548.zip
 
 echo "========================================================================"
-echo "CLONED CUSTOM CLANG"
+echo "Upload done"
 echo "========================================================================"
-
-
-
-echo "========================================================================"
-echo "BUILDING........."
-echo "========================================================================"
-
-
-# Lunch
-export PIXELAGE_BUILD="a52q"
-source build/envsetup.sh
-lunch pixelage_a52q-ap3a-userdebug
-make installclean
-mka bacon
