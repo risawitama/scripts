@@ -13,35 +13,34 @@ fi
 #Create Project Dir
 crave clone create --projectID 82 /crave-devspaces/Pixel14
 
-echo "Project dir Created"
-echo "========================================================================"
+echo "---------Project dir Created------------"
+
 
 #Go into the dir
 cd Pixel14
 
-echo "Inside the Project dir"
-echo "========================================================================"
+echo "-----------Inside the Project dir-------------"
+
 
 #crave yaml
 rm .repo/manifests/crave.yaml* || true; # Removes existing crave.yamls
 
 curl -o .repo/manifests/crave.yaml https://raw.githubusercontent.com/sounddrill31/crave_aosp_builder/main/configs/crave/crave.yaml.aosp # Downloads crave.yaml
 
-echo "cloned crave yaml"
-echo "========================================================================"
+echo "--------------cloned crave yaml---------------"
+
 
 crave pull out/target/product/a52q/PixelOS_a52q-14.0-20241006-0548.zip
 
-echo "pulled rom zip"
-echo "========================================================================"
+echo "---------------pulled rom zip----------------"
+
 
 cd /home/crave-devspaces
 
-echo "home dir"
-echo "========================================================================"
+echo "-----------home dir----------------"
 
+
+#gofile upload
 ./upload.sh Pixel14/out/target/product/a52q/PixelOS_a52q-14.0-20241006-0548.zip
 
-echo "========================================================================"
-echo "Upload done"
-echo "========================================================================"
+echo "------------Upload done----------"
