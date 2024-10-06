@@ -3,7 +3,7 @@
 cd Pixel14
 
 echo "========================================================================"
-echo "Inside the dir"
+echo "Inside the Project dir"
 echo "========================================================================"
 
 rm .repo/manifests/crave.yaml* || true; # Removes existing crave.yamls
