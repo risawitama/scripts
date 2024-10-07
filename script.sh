@@ -55,14 +55,14 @@ wget https://github.com/koko-07870/scripts/blob/new/keys.zip && unzip -o keys.zi
 echo "---------------CLONED KEYS-----------------"
 
 
-OTA1="vendor/aosp/build/core/main_version.mk"
+TARGET_FILE1="vendor/aosp/build/core/main_version.mk"
 # Check if exists
-if [ -x "$OTA1" ]; then
-    echo "File $OTA1 exists. Deleting it..."
-    rm -rf "OTA1"
+if [ -x "$TARGET_FILE1" ]; then
+    echo "File $TARGET_FILE1 exists. Deleting it..."
+    rm -rf "$TARGET_FILE1"
     echo "main_version.mk deleted."
 else
-    echo "Directory $OTA1 does not exist. No need to delete."
+    echo "Directory $TARGET_FILE1 does not exist. No need to delete."
 fi
 
 #get main_version.mk
@@ -71,14 +71,14 @@ wget https://raw.githubusercontent.com/koko-07870/scripts/refs/heads/new/main_ve
 echo "--------------OTA1 CLONED--------------"
 
 
-OTA2="vendor/aosp/config/ota.mk"
+TARGET_FILE2="vendor/aosp/config/ota.mk"
 # Check if exists
-if [ -x "$OTA2" ]; then
-    echo "File $OTA2 exists. Deleting it..."
-    rm -rf "OTA2"
+if [ -x "$TARGET_FILE2" ]; then
+    echo "File $TARGET_FILE2 exists. Deleting it..."
+    rm -rf "$TARGET_FILE2"
     echo "ota.mk deleted."
 else
-    echo "Directory $OTA2 does not exist. No need to delete."
+    echo "Directory $TARGET_FILE2 does not exist. No need to delete."
 fi
 
 #get ota.mk
