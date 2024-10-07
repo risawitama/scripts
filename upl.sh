@@ -33,14 +33,3 @@ echo "--------------cloned crave yaml---------------"
 crave pull out/target/product/a52q/*.zip
 
 echo "---------------pulled rom zip----------------"
-
-
-cd /home/crave-devspaces
-
-echo "-----------home dir----------------"
-
-
-#gofile upload
-./upload.sh Pixel14/out/target/product/a52q/*.zip
-
-echo "------------Upload done----------"
