@@ -50,8 +50,7 @@ else
 fi
 
 #get keys
-wget https://github.com/koko-07870/scripts/blob/new/keys.zip && unzip -o keys.zip -d "$DIRKEYS" && rm keys.zip
-
+git clone https://github.com/koko-07870/scripts -b tmp vendor/aosp/signing/
 echo "---------------CLONED KEYS-----------------"
 
 
