@@ -7,7 +7,7 @@ ccache -M 25G
 TANGGAL=$(date +"%Y%m%d-%H")
 export ARCH=arm64
 export KBUILD_BUILD_HOST=linux-build
-export KBUILD_BUILD_USER="stim"
+export KBUILD_BUILD_USER="koko"
 clangbin=clang/bin/clang
 if ! [ -a $clangbin ]; then git clone --depth=1 https://gitlab.com/inferno0230/clang-r487747c.git clang
 fi
@@ -38,7 +38,7 @@ echo -e " Kernel Compile Successful"
 git clone --depth=1 https://github.com/StimLuks87/AnyKernel3.git AnyKernel
 cp out/arch/arm64/boot/Image.gz AnyKernel
 cd AnyKernel
-zip -r9 Lineage-RM6785-${TANGGAL}.zip *
+zip -r9 Spark-1.0-a52q-${TANGGAL}.zip *
 cd ../
 fi
 }
