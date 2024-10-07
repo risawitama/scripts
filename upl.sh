@@ -30,7 +30,7 @@ curl -o .repo/manifests/crave.yaml https://raw.githubusercontent.com/sounddrill3
 echo "--------------cloned crave yaml---------------"
 
 
-crave pull out/target/product/a52q/PixelOS_a52q-14.0-20241007-0106.zip
+crave pull out/target/product/a52q/*.zip
 
 echo "---------------pulled rom zip----------------"
 
@@ -41,6 +41,6 @@ echo "-----------home dir----------------"
 
 
 #gofile upload
-./upload.sh Pixel14/out/target/product/a52q/PixelOS_a52q-14.0-20241007-0106.zip
+./upload.sh Pixel14/out/target/product/a52q/*.zip
 
 echo "------------Upload done----------"
