@@ -8,9 +8,8 @@ TANGGAL=$(date +"%Y%m%d-%H")
 export ARCH=arm64
 export KBUILD_BUILD_HOST=linux-build
 export KBUILD_BUILD_USER="koko"
-clang="/home/koko/pos/kernel/clang"
-clangbin="/home/koko/pos/kernel/clang/bin/clang"
-if ! [ -a $clangbin ]; then git clone --depth=1 https://gitlab.com/inferno0230/clang-r487747c.git /home/koko/pos/kernel/clang
+clangbin=clang/bin/clang
+if ! [ -a $clangbin ]; then git clone --depth=1 https://gitlab.com/inferno0230/clang-r487747c.git clang
 fi
 rm -rf /home/koko/pos/kernel/AnyKernel
  
