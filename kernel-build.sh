@@ -18,7 +18,7 @@ make O=out ARCH=arm64 vendor/lineage-a52q_defconfig
 PATH="${PWD}/clang/bin:${PATH}" \
 make -j$(nproc --all) O=out \
                       ARCH=arm64 \
-                      CC="$clang" \
+                      CC=clang \
                       AR=llvm-ar \
                       NM=llvm-nm \
                       STRIP=llvm-strip \
