@@ -22,15 +22,14 @@ set -e
 # Change this according to what you need
 DATE=`date +%Y%m%d`
 ANDROID_VERSION="14.0"
-ASC_VERSION="v3.2.3"
-ASC_VERSION1="v3"
-ASC_VERSION2="3.2.3"
-# Clang 11 r383902b1 is suggested
-TC_DIR=/home/risen/android/toolchains/clang/clang-r383902b1
+SPARK_VERSION="1.1"
+SPARK_VERSION_1="1"
+# Clang r487747c
+TC_DIR=/home/koko/pos/kernel/clang
 
 # ! DON'T CHANGE THESE !
-SRC_DIR=$(pwd)/sm7125
-OUT_DIR=/home/risen/android/builds/ascendia/sm7125
+SRC_DIR=$(pwd)/new-14
+OUT_DIR=/home/koko/pos/kernel/out
 MAIN_DIR=$(pwd)
 JOBS=32
 
@@ -42,60 +41,6 @@ MAKE_PARAMS="-j$JOBS -C $SRC_DIR O=$SRC_DIR/out \
 export PATH="$TC_DIR/bin:$PATH"
 # ! DON'T CHANGE THESE !
 
-## Now let's handle this ourselves
-CHECK_BRANCH()
-{
-	cd $SRC_DIR
-	if test "$(git rev-parse --abbrev-ref HEAD)" = ascendia-14; then
-		echo "----------------------------------------------"
-		echo "OneUI Branch Detected..."
-		ASC_VARIANT="OneUI"
-		ASC_VARIANT_SMALL="oneui"
-		ASC_VAR="O"
-		TYPE="Vanilla"
-		if [ -e KernelSU/ ]
-		then
-			echo " "
-			echo " Deleteting KernelSU/ "
-			echo " "
-			rm -rf KernelSU
-		fi
-	elif test "$(git rev-parse --abbrev-ref HEAD)" = ascendia-14-aosp; then
-		echo "----------------------------------------------"
-		echo "AOSP Branch Detected..."
-		ASC_VARIANT="AOSP"
-		ASC_VARIANT_SMALL="aosp"
-		ASC_VAR="A"
-		TYPE="Vanilla"
-		if [ -e KernelSU/ ]
-		then
-			echo " "
-			echo " Deleteting KernelSU/ "
-			echo " "
-			rm -rf KernelSU
-		fi
-	elif test "$(git rev-parse --abbrev-ref HEAD)" = ascendia-14-ksu; then
-		echo "----------------------------------------------"
-		echo "OneUI Branch Detected..."
-		ASC_VARIANT="OneUI"
-		ASC_VARIANT_SMALL="oneui"
-		ASC_VAR="O"
-		TYPE="KSU"
-	elif test "$(git rev-parse --abbrev-ref HEAD)" = ascendia-14-ksu-aosp; then
-		echo "----------------------------------------------"
-		echo "AOSP Branch Detected..."
-		ASC_VARIANT="AOSP"
-		ASC_VARIANT_SMALL="aosp"
-		ASC_VAR="A"
-		TYPE="KSU"
-	else
-		echo "----------------------------------------------"
-		echo "Check Branch..."
-		exit
-	fi
-	cd $MAIN_DIR
-}
-
 CLEAN_SOURCE()
 {
 	echo "----------------------------------------------"
@@ -106,9 +51,9 @@ CLEAN_SOURCE()
 BUILD_KERNEL()
 {
 	echo "----------------------------------------------"
-	[ -d "$SRC_DIR/out" ] && echo "Starting $VARIANT kernel build... (DIRTY)" || echo "Starting $VARIANT kernel build..."
+	[ -d "$SRC_DIR/out" ] && echo "Starting kernel build... (DIRTY)" || echo "Starting  kernel build..."
 	echo " "
-	export LOCALVERSION="-Ascendia-$ANDROID_VERSION-$ASC_VERSION-$ASC_VAR-$TYPE"
+	export LOCALVERSION="-Spark-$ANDROID_VERSION-$SPARK_VERSION"
 	mkdir -p $SRC_DIR/out
 	make $MAKE_PARAMS CC="ccache clang" vendor/$DEFCONFIG
 	echo " "
@@ -151,8 +96,8 @@ PACK_BOOT_IMG()
 	cp $SRC_DIR/out/arch/arm64/boot/dts/qcom/atoll-ab-idp.dtb $OUT_DIR/tmp/dtb
 	# Repack and copy in out folder
 	magiskboot_x86 repack boot.img boot_new.img
-	cp $OUT_DIR/tmp/boot_new.img $OUT_DIR/Builds/${ASC_VERSION1}/${ASC_VERSION2}/Ascendia_${ASC_VERSION2}_${TYPE}_${ASC_VARIANT}_${CODENAME}_boot.img
-	mv $OUT_DIR/tmp/boot_new.img $OUT_DIR/out/zip/ascendia/$VARIANT/${ASC_VARIANT_SMALL}.img
+	cp $OUT_DIR/tmp/boot_new.img $OUT_DIR/Builds/${SPARK_VERSION_1}//Spark_${SPARK_VERSION}_${CODENAME}_boot.img
+	mv $OUT_DIR/tmp/boot_new.img $OUT_DIR/out/zip/{SPARK_VERSION}.img
 	# Clean :3
 	rm -rf $OUT_DIR/tmp/
 	cd $MAIN_DIR/
@@ -163,7 +108,7 @@ SWITCH_BRANCH()
 	cd $SRC_DIR
 	if test "$(git rev-parse --abbrev-ref HEAD)" = ascendia-14; then
 		echo "----------------------------------------------"
-		echo "Vanilla Build Detected..."
+		echoild Detected..."
 		git switch ascendia-14-aosp
 	elif test "$(git rev-parse --abbrev-ref HEAD)" = ascendia-14-ksu; then
 		echo "----------------------------------------------"
@@ -174,7 +119,7 @@ SWITCH_BRANCH()
 		echo "Check Branch..."
 		exit
 	fi
-	cd $MAIN_DIR
+ 
 }
 
 MAKE_INSTALLER()
