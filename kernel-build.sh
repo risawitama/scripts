@@ -27,7 +27,7 @@ make -j$(nproc --all) O=out \
                       CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
                       LD=ld.lld \
                       CONFIG_NO_ERROR_ON_MISMATCH=y
-                      
+}                      
 function zupload()
 {
 zimage=out/arch/arm64/boot/Image.gz
