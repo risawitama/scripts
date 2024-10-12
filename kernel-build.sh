@@ -1,4 +1,5 @@
 #!/bin/bash
+
 function compile()
 {
 source ~/.bashrc && source ~/.profile
