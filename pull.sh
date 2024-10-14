@@ -8,7 +8,7 @@ if [ -d "$DIRROM" ]; then
     rm .repo/manifests/crave.yaml* || true; # Removes existing crave.yamls
     curl -o .repo/manifests/crave.yaml https://raw.githubusercontent.com/sounddrill31/crave_aosp_builder/main/configs/crave/crave.yaml.aosp # Downloads crave.yaml
     echo "--------------cloned crave yaml---------------"
-    crave pull out/target/product/a52q/*.zip
+    crave pull out/target/product/*/*.zip
     crave pull out/build_date.txt
     echo "-----done------"
 else
@@ -18,7 +18,7 @@ else
     rm .repo/manifests/crave.yaml* || true; # Removes existing crave.yamls
     curl -o .repo/manifests/crave.yaml https://raw.githubusercontent.com/sounddrill31/crave_aosp_builder/main/configs/crave/crave.yaml.aosp # Downloads crave.yaml
     echo "--------------cloned crave yaml---------------"
-    crave pull out/target/product/a52q/*.zip
+    crave pull out/target/product/*/*.zip
     crave pull out/build_date.txt
     echo "-----done------"
 fi
