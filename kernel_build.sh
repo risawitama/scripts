@@ -35,7 +35,7 @@ then
 echo  " Failed To Compile Kernel"
 else
 echo -e " Kernel Compile Successful"
-git clone --depth=1 https://github.com/StimLuks87/AnyKernel3.git AnyKernel
+git clone --depth=1 https://github.com/koko-07870/AnyKernel3.git AnyKernel
 cp out/arch/arm64/boot/Image.gz AnyKernel
 cd AnyKernel
 zip -r9 Spark-1.1-A14-${TANGGAL}.zip *
