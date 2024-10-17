@@ -1,1 +1,0 @@
-- Try changing recovery if you are facing any kind of issues while dirty flashing. TWRP is recommended to use.
