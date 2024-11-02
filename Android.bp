@@ -9,10 +9,6 @@ soong_namespace {
 cc_library_shared {
     name: "libfmjni",
 
-    defaults: [
-        "qcom_libfmjni_defaults",
-    ],
-
     srcs: [
         "FmIoctlsInterface.cpp",
         "ConfigFmThs.cpp",
