@@ -38,7 +38,7 @@ echo -e " Kernel Compile Successful"
 git clone --depth=1 https://github.com/koko-07870/AnyKernel3.git AnyKernel
 cp out/arch/arm64/boot/Image.gz AnyKernel
 cd AnyKernel
-zip -r9 Spark-1.2-A14-${TANGGAL}.zip *
+zip -r9 Spark-2.0-A15-${TANGGAL}.zip *
 cd ../
 fi
 }
