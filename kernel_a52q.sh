@@ -12,7 +12,7 @@ clangbin=clang/bin/clang
 if ! [ -a $clangbin ]; then git clone --depth=1 https://gitlab.com/inferno0230/clang-r487747c.git clang
 fi
 rm -rf AnyKernel
-make O=out ARCH=arm64 vendor/lineage-a52q_defconfig
+make O=out ARCH=arm64 vendor/pixelos-a52q_defconfig
 PATH="${PWD}/clang/bin:${PATH}" \
 make -j$(nproc --all) O=out \
                       ARCH=arm64 \
