@@ -10,8 +10,8 @@ git clone https://github.com/risawitama/local_manifests --depth=1 -b pos .repo/l
 /opt/crave/resync.sh
 
 # temp
-rm -rf packages/apps/FMRadio
-rm -rf vendor/qcom/opensource/libfmjni
+#rm -rf packages/apps/FMRadio
+#rm -rf vendor/qcom/opensource/libfmjni
 
 # Export
 export BUILD_USERNAME=risawitama
