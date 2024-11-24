@@ -18,4 +18,4 @@ export BUILD_USERNAME=risawitama
 export BUILD_HOSTNAME=crave
 export TARGET_BOOT_ANIMATION_RES=720
 source build/envsetup.sh
-breakfast onclite eng && make installclean && mka bacon
+breakfast onclite eng && make installclean && lunch aosp_onclite-ap2a-eng && mka bacon
