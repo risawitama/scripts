@@ -16,4 +16,4 @@ git clone https://github.com/risawitama/local_manifests --depth=1 -b crdroid .re
 export BUILD_USERNAME=risawitama
 export BUILD_HOSTNAME=crave
 source build/envsetup.sh
-breakfast onclite userdebug && brunch onclite userdebug
+brunch onclite
